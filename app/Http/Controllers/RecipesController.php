@@ -31,7 +31,7 @@ class RecipesController extends Controller
         }
         return [
             'message' => 'Recipe details by id',
-            'recipe' => recipes::find($id)
+            'recipe' => [recipes::find($id)]
         ];
     }
     /**
