@@ -26,6 +26,9 @@ class RecipesController extends Controller
      */
     public function show($id)
     {
+        if((int)$id == 0){
+            $id = 1;
+        }
         return [
             'message' => 'Recipe details by id',
             'recipes' => recipes::find($id)
@@ -98,9 +101,6 @@ class RecipesController extends Controller
             'ingredients' => [],
             'cost' => [],
         ];
-        if(!isset($id)){
-            $id = 1;
-        }
         $request->validate($valid_dict);
         $request = $request->only(array_keys($valid_dict));
         $r = recipes::where('id',$id);
