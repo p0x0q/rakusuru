@@ -124,7 +124,7 @@ class RecipesController extends Controller
     {
         $r = recipes::where('id',$id);
         if($r->exists()){
-            $r->remove();
+            $r->delete();
             return ["message"=> "Recipe successfully removed!"];
         }else{
             return ["message"=> "No Recipe found"];
