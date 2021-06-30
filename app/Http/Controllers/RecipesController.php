@@ -40,14 +40,14 @@ class RecipesController extends Controller
     public function store(Request $request)
     {
         $valid_dict = [
-            'title' => ['required'],
-            'making_time' => ['required'],
-            'serves' => ['required'],
-            'ingredients' => ['required'],
-            'cost' => ['required'],
+            'title' => [],
+            'making_time' => [],
+            'serves' => [],
+            'ingredients' => [],
+            'cost' => [],
         ];
 
-        if(Validator::make($request, $valid_dict)->fails()){
+        if(!$request->has('title')||!$request->has('making_time')||!$request->has('serves')||!$request->has('ingredients')||!$request->has('cost')){
             return [
                 "message"=> "Recipe creation failed!",
                 "required"=> "title, making_time, serves, ingredients, cost"
