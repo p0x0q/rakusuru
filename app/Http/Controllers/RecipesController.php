@@ -31,7 +31,7 @@ class RecipesController extends Controller
         }
         return [
             'message' => 'Recipe details by id',
-            'recipes' => recipes::find($id)
+            'recipe' => recipes::find($id)
         ];
     }
     /**
@@ -122,7 +122,7 @@ class RecipesController extends Controller
      */
     public function destroy($id)
     {
-        $r = recipes::where($id);
+        $r = recipes::where('id',$id);
         if($r->exists()){
             $r->remove();
             return ["message"=> "Recipe successfully removed!"];
